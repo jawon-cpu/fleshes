@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Falling Bodies Archive</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem;
+      opacity: 0;
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    section.visible {
+      opacity: 1;
+    }
+    h1, h2 {
+      margin: 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #ccc;
+    }
+    .header {
+      background-color: #000;
+      padding: 1.5rem 4rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #333;
+    }
+    .header h1 {
+      font-size: 1.2rem;
+      margin: 0;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Temporary Names. Permanent Coordinates.</h1>
+  </div>
+
+  <section style="background-image: url('Kaoru.png');">
+    <h1>Kaoru</h1>
+    <h2>35.6895° N, 139.6917° E – 13:26 GMT+2</h2>
+  </section>
+
+  <section style="background-image: url('Maarit.png');">
+    <h1>Maarit</h1>
+    <h2>60.1695° N, 24.9354° E – 07:11 EET</h2>
+  </section>
+
+  <section style="background-image: url('Eleanor.png');">
+    <h1>Eleanor</h1>
+    <h2>40.7740° N, 73.9700° W – 14:23 EDT</h2>
+  </section>
+
+  <section style="background-image: url('An Li.png');">
+    <h1>An Li (安莉)</h1>
+    <h2>23.1291° N, 113.2644° E – 08:32 CST</h2>
+  </section>
+
+  <section style="background-image: url('Lilit.png');">
+    <h1>Lilit</h1>
+    <h2>40.1792° N, 44.4991° E – 11:28 AMT</h2>
+  </section>
+
+  <section style="background-image: url('Noura.png');">
+    <h1>Noura</h1>
+    <h2>25.1972° N, 55.2744° E – 10:12 GST</h2>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
